@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: testdeploy
+  name: testdeploy
+spec:
+  minReadySeconds: 20
+  replicas: 6
+  selector:
+    matchLabels:
+      app: testdeploy
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: testdeploy
+    spec:
+      containers:
+      - image: gopicn/rollingupdate:v1
+        name: nginx

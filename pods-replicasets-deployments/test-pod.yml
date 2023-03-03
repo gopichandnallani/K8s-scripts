@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: test-pod
+  name: test-pod
+spec:
+  containers:
+  - image: gopicn/utils:1.1
+    name: test-pod
+  - image: gopicn/utils:2
+    name: nginx-image
+  restartPolicy: Always
+
+
